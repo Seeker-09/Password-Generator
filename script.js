@@ -1,3 +1,6 @@
+/*  MY NOTES: 
+    1. I could add an array that keeps track of which character confirmations are true, and have numbers (or just strings ig) correspond with thich character confirmation is which and push those numbers to the array, and random number through that so that i would only get those numbers for the switch statment.*/  
+
 // Assignment code here
 var generatePassword = function() {
     // Int variables
@@ -7,6 +10,12 @@ var generatePassword = function() {
     
     // bool variables
     var passwordLengthConfirm = false;
+
+    // character arrays
+    var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    var numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+    var specialCharactersArray = [' ', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
 
     // ask for the desired length of the password
     while (!passwordLengthConfirm) {
@@ -32,11 +41,11 @@ var generatePassword = function() {
 
     var specialCharactersConfirm = window.confirm("Would you like cpecial characters in your password?");
 
-    // check if at least option has been chosen.
+    // check if at least option has been chosen. if not, choose one for them 
     if (!lowercaseConfirm && !uppercaseConfirm && !numbersConfirm && !specialCharactersConfirm) {
-        var randomNumber = Math.floor(Math.random() * (4 - 1) + 1);
+        var characterRandomNumber = Math.floor(Math.random() * (4 - 1) + 1);
 
-        switch (randomNumber) {
+        switch (characterRandomNumber) {
             case 1:
                 lowercaseConfirm = true;
                 break;
@@ -52,20 +61,57 @@ var generatePassword = function() {
             case 4:
                 specialCharactersConfirm = true;
                 break;
+
             default:
                 window.alert("something broke lul");
                 break;
         }
     }
 
-    // special characters prompt. yes or no confirm prompt
-        // yes/no lowercase
-        // yes/no uppercase
-        // yes/no numeric
-        // yes/no special characters
-    // validate answers. at least one should be yes. random number selection if all no
-
+    // TODO: can be made better but this works
     // generate password and return
+    // need to initialize 'password' empty because i was getting 'undefined' returned along with the generated password
+    var password = ''; 
+    for (let i = 0; i < passwordLength; i++) {
+        characterRandomNumber = Math.floor(Math.random() * (4 - 1) + 1);
+
+        switch (characterRandomNumber) {
+            case 1:
+                if (lowercaseConfirm) {
+                    // concatenates the character onto password
+                    password += lowercaseArray[Math.floor(Math.random() * (lowercaseArray.length - 1))];
+                    break;
+                }
+                
+            case 2:
+                if (uppercaseConfirm) {
+                    // concatenates the character onto password
+                    password += uppercaseArray[Math.floor(Math.random() * (uppercaseArray.length - 1))];
+                    break;
+                }
+
+            case 3:
+                if (numbersConfirm) {
+                    // concatenates the character onto password
+                    password += numbersArray[Math.floor(Math.random() * (numbersArray.length - 1))];
+                    break;
+                }
+
+            case 4:
+                if (specialCharactersConfirm) {
+                    // concatenates the character onto password
+                    password += specialCharactersArray[Math.floor(Math.random() * specialCharactersArray.length - 1)];
+                    break;
+                }
+
+            default:
+                // this is a catch for when the rng doesn't work. acts as a reroll basically
+                i--;
+                break;
+        }
+    }
+
+    return password;
 }
 
 // Get references to the #generate element
