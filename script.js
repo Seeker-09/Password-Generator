@@ -43,7 +43,7 @@ var generatePassword = function() {
 
     // check if at least option has been chosen. if not, choose one for them 
     if (!lowercaseConfirm && !uppercaseConfirm && !numbersConfirm && !specialCharactersConfirm) {
-        var characterRandomNumber = Math.floor(Math.random() * (4 - 1) + 1);
+        var characterRandomNumber = Math.floor(Math.random() * 4 + 1);
 
         // for convenience, i made the 'at least one needs to be selected' automated. Can convert it to make the user choose again if wanted
         switch (characterRandomNumber) {
@@ -74,7 +74,8 @@ var generatePassword = function() {
     // need to initialize 'password' empty because i was getting 'undefined' returned along with the generated password
     var password = ''; 
     for (let i = 0; i < passwordLength; i++) {
-        characterRandomNumber = Math.floor(Math.random() * (4 - 1) + 1);
+        characterRandomNumber = Math.floor(Math.random() * 4 + 1);
+        console.log(characterRandomNumber);
 
         switch (characterRandomNumber) {
             case 1:
