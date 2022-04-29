@@ -45,6 +45,7 @@ var generatePassword = function() {
     if (!lowercaseConfirm && !uppercaseConfirm && !numbersConfirm && !specialCharactersConfirm) {
         var characterRandomNumber = Math.floor(Math.random() * (4 - 1) + 1);
 
+        // for convenience, i made the 'at least one needs to be selected' automated. Can convert it to make the user choose again if wanted
         switch (characterRandomNumber) {
             case 1:
                 lowercaseConfirm = true;
