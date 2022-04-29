@@ -23,14 +23,21 @@ var generatePassword = function() {
         }
     }
 
-    
+    // types of characters to have in the password
+    var lowercaseConfirm = window.confirm("Would you like lowercase letters in your password?");
+
+    var uppercaseConfirm = window.confirm("Would you like uppercase letters in your password?");
+
+    var numbersConfirm = window.confirm("Would you like numbers in your password?");
+
+    var specialCharactersConfirm = window.confirm("Would you like cpecial characters in your password?");
 
     // special characters prompt. yes or no confirm prompt
         // yes/no lowercase
         // yes/no uppercase
         // yes/no numeric
         // yes/no special characters
-    // validate answers at least one should be yes. random number selection if all no
+    // validate answers. at least one should be yes. random number selection if all no
 
     // generate password and return
 }
