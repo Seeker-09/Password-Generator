@@ -15,7 +15,7 @@ var generatePassword = function() {
     var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     var numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-    var specialCharactersArray = [' ', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
+    var specialCharactersArray = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
 
     // ask for the desired length of the password
     while (!passwordLengthConfirm) {
@@ -39,7 +39,7 @@ var generatePassword = function() {
 
     var numbersConfirm = window.confirm("Would you like numbers in your password?");
 
-    var specialCharactersConfirm = window.confirm("Would you like cpecial characters in your password?");
+    var specialCharactersConfirm = window.confirm("Would you like special characters in your password?");
 
     // check if at least option has been chosen. if not, choose one for them 
     if (!lowercaseConfirm && !uppercaseConfirm && !numbersConfirm && !specialCharactersConfirm) {
