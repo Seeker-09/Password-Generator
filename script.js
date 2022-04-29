@@ -23,7 +23,7 @@ var generatePassword = function() {
         }
     }
 
-    // types of characters to have in the password
+    // store the types of characters to have in the password
     var lowercaseConfirm = window.confirm("Would you like lowercase letters in your password?");
 
     var uppercaseConfirm = window.confirm("Would you like uppercase letters in your password?");
@@ -31,6 +31,32 @@ var generatePassword = function() {
     var numbersConfirm = window.confirm("Would you like numbers in your password?");
 
     var specialCharactersConfirm = window.confirm("Would you like cpecial characters in your password?");
+
+    // check if at least option has been chosen.
+    if (!lowercaseConfirm && !uppercaseConfirm && !numbersConfirm && !specialCharactersConfirm) {
+        var randomNumber = Math.floor(Math.random() * (4 - 1) + 1);
+
+        switch (randomNumber) {
+            case 1:
+                lowercaseConfirm = true;
+                break;
+
+            case 2:
+                uppercaseConfirm = true;
+                break;
+
+            case 3:
+                numbersConfirm = true;
+                break;
+
+            case 4:
+                specialCharactersConfirm = true;
+                break;
+            default:
+                window.alert("something broke lul");
+                break;
+        }
+    }
 
     // special characters prompt. yes or no confirm prompt
         // yes/no lowercase
